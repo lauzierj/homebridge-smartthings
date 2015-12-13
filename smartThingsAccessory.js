@@ -25,7 +25,7 @@ SmartThingsAccessory.prototype.command = function(characteristic, value) {
   var c = this.getCommandName(characteristic, value);
   var url = this.commands[c];
 
-  this.log(this.name + ' sending command ' + c);
+  this.log(this.name + ' sending command ' + c + ' based on value ' value);
 
   request.put({
     url: url
