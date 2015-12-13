@@ -45,9 +45,8 @@ SmartThingsAccessory.prototype.getState = function(callback) {
   this.log(this.name + ' getting state ' + url);
 
   request(url).then(function(response) {
-    self.log(response);
-    callback(null, true);
-    self.log(self.name + ' got state');
+    callback(null, response == 'on');
+    self.log(self.name + ' got state of ' + response);
   }).catch(function(err) {
     self.log('There was a problem getting state for ' + self.name);
     self.log(err);
