@@ -44,10 +44,8 @@ SmartThingsAccessory.prototype.getState = function(callback) {
 
   this.log(this.name + ' getting state ' + url);
 
-  request.get({
-    url: url
-  }).then(function(response) {
-    self.log(response.body);
+  request(url).then(function(response) {
+    self.log(response);
     callback(null, true);
     self.log(self.name + ' got state');
   }).catch(function(err) {
