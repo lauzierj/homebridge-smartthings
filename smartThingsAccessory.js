@@ -51,7 +51,7 @@ SmartThingsAccessory.prototype.getState = function(callback) {
     callback(true);
     self.log(self.name + ' got state');
   }).catch(function(err) {
-    self.log('There was a problem sending command ' + c + ' to ' + self.name);
+    self.log('There was a problem getting state for ' + self.name);
   });
 };
 
