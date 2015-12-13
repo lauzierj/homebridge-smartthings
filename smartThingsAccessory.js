@@ -20,7 +20,7 @@ SmartThingsAccessory.prototype.getCommandName = function(characteristic, value) 
   }
 };
 
-SmartThingsAccessory.prototype.command = function(characteristic, callback) {
+SmartThingsAccessory.prototype.command = function(characteristic, value, callback) {
   var self = this;
 
   var c = this.getCommandName(characteristic, value);
