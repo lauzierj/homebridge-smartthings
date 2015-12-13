@@ -30,7 +30,7 @@ SmartThingsPlatform.prototype.accessories = function(callback) {
       'switches',
       'hues'
     ]).values().flatten().map(function(acc) {
-      return new SmartThingsAccessory(self.log, acc.name, acc.commands, Service, Characteristic);
+      return new SmartThingsAccessory(self.log, acc.name, acc.commands, acc.state, Service, Characteristic);
     }).run();
 
     callback(foundAccessories);

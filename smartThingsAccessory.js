@@ -2,13 +2,14 @@ var request = require('request-promise');
 
 var Service, Characteristic;
 
-function SmartThingsAccessory(log, name, commands, service, characteristic) {
+function SmartThingsAccessory(log, name, commands, state, service, characteristic) {
   Service = service;
   Characteristic = characteristic;
 
   // device info
   this.name = name;
   this.commands = commands;
+  this.state = state;
   this.log = log;
 }
 
@@ -36,11 +37,30 @@ SmartThingsAccessory.prototype.command = function(characteristic, value) {
   });
 };
 
+SmartThingsAccessory.prototype.state = function(callback) {
+  var self = this;
+
+  var url = this.state;
+
+  this.log(this.name + ' sending command ' + c + ' based on value ' + value);
+
+  request.put({
+    url: url
+  }).then(function(response) {
+    self.log(response);
+    callback(true);
+    self.log(self.name + ' sent command ' + c);
+  }).catch(function(err) {
+    self.log('There was a problem sending command ' + c + ' to ' + self.name);
+  });
+};
+
 SmartThingsAccessory.prototype.getServices = function() {
   var switchService = new Service.Switch(this.name);
 
   switchService
     .getCharacteristic(Characteristic.On)
+    .on('get', this.state.bind(this))
     .on('set', this.command.bind(this, Characteristic.On));
 
   return [switchService];
