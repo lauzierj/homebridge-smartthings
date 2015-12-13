@@ -20,7 +20,7 @@ SmartThingsAccessory.prototype.getCommandName = function(characteristic, value) 
   }
 };
 
-SmartThingsAccessory.prototype.command = function(characteristic, value) {
+SmartThingsAccessory.prototype.command = function(characteristic, callback) {
   var self = this;
 
   var c = this.getCommandName(characteristic, value);
@@ -32,7 +32,9 @@ SmartThingsAccessory.prototype.command = function(characteristic, value) {
     url: url
   }).then(function(response) {
     self.log(self.name + ' sent command ' + c);
+    callback(null);
   }).catch(function(err) {
+    callback(err);
     self.log('There was a problem sending command ' + c + ' to ' + self.name);
   });
 };
