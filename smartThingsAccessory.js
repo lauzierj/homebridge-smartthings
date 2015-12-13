@@ -42,7 +42,7 @@ SmartThingsAccessory.prototype.getState = function(callback) {
 
   var url = this.state;
 
-  this.log(this.name + ' getting state');
+  this.log(this.name + ' getting state ' + url);
 
   request.put({
     url: url
@@ -52,6 +52,7 @@ SmartThingsAccessory.prototype.getState = function(callback) {
     self.log(self.name + ' got state');
   }).catch(function(err) {
     self.log('There was a problem getting state for ' + self.name);
+    self.log(err);
   });
 };
 
