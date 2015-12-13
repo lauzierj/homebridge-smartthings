@@ -1,0 +1,30 @@
+{
+  "name": "homebridge-smartthings",
+  "version": "1.0.0",
+  "description": "SmartThings plugin for homebridge: https://github.com/nfarina/homebridge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lauzierj/homebridge-smartthings.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "bugs": {
+    "url": "https://github.com/lauzierj/homebridge-smartthings/issues"
+  },
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "homepage": "https://github.com/lauzierj/homebridge-smartthings#readme",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "request-promise": "^1.0.2"
+  }
+}
