@@ -37,7 +37,7 @@ SmartThingsAccessory.prototype.command = function(characteristic, value) {
   });
 };
 
-SmartThingsAccessory.prototype.state = function(callback) {
+SmartThingsAccessory.prototype.getState = function(callback) {
   var self = this;
 
   var url = this.state;
@@ -60,7 +60,7 @@ SmartThingsAccessory.prototype.getServices = function() {
 
   switchService
     .getCharacteristic(Characteristic.On)
-    .on('get', this.state.bind(this))
+    .on('get', this.getState.bind(this))
     .on('set', this.command.bind(this, Characteristic.On));
 
   return [switchService];
