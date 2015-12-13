@@ -42,14 +42,14 @@ SmartThingsAccessory.prototype.getState = function(callback) {
 
   var url = this.state;
 
-  this.log(this.name + ' sending command ' + c + ' based on value ' + value);
+  this.log(this.name + ' getting state');
 
   request.put({
     url: url
   }).then(function(response) {
     self.log(response);
     callback(true);
-    self.log(self.name + ' sent command ' + c);
+    self.log(self.name + ' got state');
   }).catch(function(err) {
     self.log('There was a problem sending command ' + c + ' to ' + self.name);
   });
