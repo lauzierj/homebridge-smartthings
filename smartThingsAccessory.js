@@ -14,7 +14,7 @@ function SmartThingsAccessory(log, name, commands, service, characteristic) {
 
 SmartThingsAccessory.prototype.getCommandName = function(characteristic, value) {
   switch(characteristic) {
-    case Characteristic.ON:
+    case Characteristic.On:
       return value ? 'on' : 'off';
   }
 };
